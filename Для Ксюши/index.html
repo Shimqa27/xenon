@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Ксюши</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #800020 0%, #500000 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 240, 245, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+            position: relative;
+            padding: 30px;
+            color: #500000;
+        }
+
+        .lily-decoration {
+            position: absolute;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .lily-1 {
+            top: -30px;
+            right: -20px;
+            transform: rotate(20deg);
+            font-size: 150px;
+        }
+
+        .lily-2 {
+            bottom: -40px;
+            left: -30px;
+            transform: rotate(-15deg);
+            font-size: 180px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #800020;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 5px solid #800020;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border-left: 5px solid #800020;
+        }
+
+        .message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-style: italic;
+            text-align: right;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #800020;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            color: #ff4d6d;
+            animation: float 6s ease-in infinite;
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .photo-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .message p {
+                font-size: 1.1rem;
+            }
+            
+            .lily-1, .lily-2 {
+                font-size: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .photo-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .message {
+                padding: 15px;
+            }
+            
+            .lily-1, .lily-2 {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Декоративные лилии -->
+        <div class="lily-decoration lily-1">🌸</div>
+        <div class="lily-decoration lily-2">🌸</div>
+        
+        <!-- Контент -->
+        <div class="content">
+            <h1>Ксюша, ты лучшая!</h1>
+            
+            <div class="photo-container">
+                <!-- Встроенное фото (замените на реальное фото) -->
+                <img src="img\IMG_9750.JPG" alt="Ксюша">
+            </div>
+            
+            <div class="message">
+                <p>Ксюш, хочу сказать тебе, что всё будет хорошо! Жизнь иногда преподносит сложные моменты, но я уверен, что ты со всем справишься.</p>
+                <p>Помни, что ты не одна - я всегда рядом и готов поддержать тебя в любой ситуации. Ты сильная, умная и прекрасная!</p>
+                <p>Верь в себя, как я верю в тебя!</p>
+                <div class="signature">С любовью от Саши!</div>
+            </div>
+        </div>
+        
+        <!-- Анимированные сердца -->
+        <div class="hearts" id="hearts"></div>
+    </div>
+
+    <script>
+        // Создание летающих сердечек
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartCount = 25;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        createHearts();
+    </script>
+</body>
+</html>
