@@ -255,6 +255,10 @@
             .message {
                 font-size: 1.2rem;
             }
+            
+            .lily {
+                font-size: 35px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -281,6 +285,27 @@
             
             .lily {
                 font-size: 30px;
+            }
+            
+            /* Позиционирование лилий для мобильных */
+            .lily-1 {
+                top: 10px;
+                left: 5%;
+            }
+            
+            .lily-2 {
+                bottom: 20px;
+                right: 5%;
+            }
+            
+            .lily-3 {
+                top: 40%;
+                left: 2%;
+            }
+            
+            .lily-4 {
+                top: 30%;
+                right: 3%;
             }
         }
 
@@ -315,8 +340,30 @@
                 font-size: 24px;
             }
             
+            /* Лилии остаются видимыми на маленьких экранах */
             .lily-1, .lily-2, .lily-3, .lily-4 {
-                display: none;
+                display: block;
+            }
+            
+            /* Дополнительная адаптация позиций для очень маленьких экранов */
+            .lily-1 {
+                top: 5px;
+                left: 3%;
+            }
+            
+            .lily-2 {
+                bottom: 10px;
+                right: 3%;
+            }
+            
+            .lily-3 {
+                top: 35%;
+                left: 1%;
+            }
+            
+            .lily-4 {
+                top: 25%;
+                right: 2%;
             }
         }
     </style>
@@ -325,7 +372,8 @@
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>Ксюша, ты лучшая!</h1>
+                <h1>Ксюша, ты прекрасна!</h1>
+                <div class="subtitle">Этот сайт создан специально для тебя</div>
             </div>
             
             <div class="photo-section">
